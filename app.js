@@ -1,22 +1,11 @@
-const {createReadStream} = require('fs')
-const {createServer} = require('http')
+const http = require("http");
 
-// configuramos con una variable de entorno el puerto
-const {PORT = 3000} = process.env
+const host = 'localhost';
+const port = 8000;
 
-// creamos con el content type del archivo que vamos a servir
-const HTML_CONTENT_TYPE = 'text/html'
+const requestListener = function (req, res) {};
 
-// creamos un requestListener para pasarle a nuestro servidor
-const requestListener = (req, res) => {
-  // escribimos en la respuesta el status code de 200 y el content type que necesitamos
-  res.writeHead(200, { 'Content-Type': HTML_CONTENT_TYPE })
-  // leemos el fichero index.html y su contenido lo redirigimos a la respuesta
-  createReadStream('interiorconsultant.html').pipe(res)
-}
-
-// creamos un servidor con el requestListener
-const server = createServer(requestListener)
-
-// hacemos que el servidor escuche el puerto configurado
-server.listen(PORT)
+const server = http.createServer(requestListener);
+server.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
+});
