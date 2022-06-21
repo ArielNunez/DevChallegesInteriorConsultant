@@ -12,7 +12,7 @@ const requestListener = (req, res) => {
   // escribimos en la respuesta el status code de 200 y el content type que necesitamos
   res.writeHead(200, { 'Content-Type': HTML_CONTENT_TYPE })
   // leemos el fichero index.html y su contenido lo redirigimos a la respuesta
-  createReadStream('interiorConsultant.html').pipe(res)
+  createReadStream('interiorconsultant.html').pipe(res)
 }
 
 // creamos un servidor con el requestListener
